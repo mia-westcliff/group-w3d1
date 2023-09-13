@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+</head>
+<body>
+    <script>
+        // Function to determine the time of day (noon or sunset)
+        function getTimeOfDay() {
+            const now = new Date();
+            const hours = now.getHours();
+
+            if (hours >= 12 && hours < 18) {
+                return 'Noon';
+            } else {
+                return 'Sunset';
+            }
+        }
+
+        // Function to display the appropriate recipe
+        function displayRecipe() {
+            const timeOfDay = getTimeOfDay();
+            const recipeContainer = document.createElement('div');
+            recipeContainer.setAttribute('id', 'recipe-container');
+            document.body.appendChild(recipeContainer);
+
+            if (timeOfDay === 'Noon') {
+                // Recipe for Lunch
+                const lunchRecipe = document.createElement('div');
+                lunchRecipe.innerHTML = `
+                    <h1>Lunch Recipe</h1>
+                    <ol>
+                        <li>Place bread and toast the bread slices to your desired level of crunchiness.</li>
+                        <li>Cut, pit, and remove the avocado from its peel.</li>
+                        <li>Mash avocado with a fork in a small bowl until it reaches your desired texture. Mix in the lemon juice as you mash.</li>
+                        <li>Divide the avocado mixture between the two slices of toast. </li>
+                        <li>Drizzle olive oil over the top of each slice. Add a sprinkle of the red pepper flakes and salt to each piece. </li>
+                    </ol>
+                `;
+                recipeContainer.appendChild(lunchRecipe);
+            } else {
+                // Recipe for Dinner
+                const dinnerRecipe = document.createElement('div');
+                dinnerRecipe.innerHTML = `
+                    <h1>Dinner Recipe</h1>
+                    <ol>
+                        <li>Heat the oil until hot and pour in the beaten eggs. </li>
+                        <li>Wait until the bottom sets and scramble lightly. </li>
+                        <li>Add the rice when the eggs are mostly set but partially runny. </li>
+                        <li>Cook and stir to chop the eggs into smaller bits. </li>
+                        <li>Add the green onion and salt then thoroughly toast the rice. </li>
+                    </ol>
+                `;
+                recipeContainer.appendChild(dinnerRecipe);
+            }
+        }
+
+        // Call the displayRecipe function when the page loads
+        window.onload = displayRecipe;
+    </script>
+</body>
+</html>
